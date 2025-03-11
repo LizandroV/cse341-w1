@@ -1,0 +1,37 @@
+[
+  {
+    "firstName": "Lizandro",
+    "lastName": "Vivanco",
+    "email": "lizandro@hotmail.com",
+    "favoriteColor": "red",
+    "birthday": "23/11/1997"
+  },
+  {
+    "firstName": "Rosa Lyz",
+    "lastName": "Choquehuanca",
+    "email": "rosalyz@hotmail.com",
+    "favoriteColor": "black",
+    "birthday": "21/07/1998"
+  },
+  {
+    "firstName": "Star",
+    "lastName": "Vivanco",
+    "email": "star@hotmail.com",
+    "favoriteColor": "white",
+    "birthday": "2/02/2023"
+  },
+  {
+    "firstName": "Enrique",
+    "lastName": "Vivanco",
+    "email": "enrique@hotmail.com",
+    "favoriteColor": "green",
+    "birthday": "17/11/1999"
+  },
+  {
+    "firstName": "David",
+    "lastName": "Casamona",
+    "email": "david@hotmail.com",
+    "favoriteColor": "blue",
+    "birthday": "2/08/1999"
+  }
+]
