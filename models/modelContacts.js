@@ -1,34 +1,34 @@
-import { ObjectId } from "mongodb";
-import dbClient from '../config/dbClient.js'
+import { ObjectId } from 'mongodb';
+import dbClient from '../config/dbClient.js';
 
-class contactsModel{
-    async create(contact){
-        const colContacts = dbClient.db.collection('contacts');
-        return await colContacts.insertOne(contact);
-    }
+class contactsModel {
+	async create(contact) {
+		const colContacts = dbClient.db.collection('contacts');
+		return await colContacts.insertOne(contact);
+	}
 
-    async getAll(){
-        const colContacts = dbClient.db.collection('contacts');
-        return await colContacts.find({}).toArray();
-    }
+	async getAll() {
+		const colContacts = dbClient.db.collection('contacts');
+		return await colContacts.find({}).toArray();
+	}
 
-    async getOne(id){
-        const ID = new ObjectId(id)
-        const colContacts = dbClient.db.collection('contacts');
-        return await colContacts.findOne({_id: ID});
-    }
+	async getOne(id) {
+		const ID = new ObjectId(id);
+		const colContacts = dbClient.db.collection('contacts');
+		return await colContacts.findOne({ _id: ID });
+	}
 
-    async update(id, contact){
-        const ID = new ObjectId(id)
-        const colContacts = dbClient.db.collection('contacts');
-        return await colContacts.updateOne({_id: ID}, {$set: contact});
-    }
+	async update(id, contact) {
+		const ID = new ObjectId(id);
+		const colContacts = dbClient.db.collection('contacts');
+		return await colContacts.updateOne({ _id: ID }, { $set: contact });
+	}
 
-    async delete(id, contact){
-        const ID = new ObjectId(id)
-        const colContacts = dbClient.db.collection('contacts');
-        return await colContacts.deleteOne({_id: ID});
-    }
+	async delete(id) {
+		const ID = new ObjectId(id);
+		const colContacts = dbClient.db.collection('contacts');
+		return await colContacts.deleteOne({ _id: ID });
+	}
 }
 
 export default new contactsModel();

@@ -1,0 +1,146 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "API Contact",
+		"description": "Manage contacts",
+		"version": "1.0.0"
+	},
+	"host": "cse341-contactsapi-z6wb.onrender.com",
+	"basePath": "/",
+	"schemes": ["https"],
+	"paths": {
+		"/contacts/": {
+			"get": {
+				"description": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"post": {
+				"description": "",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"firstName": {
+									"example": "string"
+								},
+								"lastName": {
+									"example": "string"
+								},
+								"email": {
+									"example": "email"
+								},
+								"favoriteColor": {
+									"example": "string"
+								},
+								"birthday": {
+									"example": "date"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/contacts/{id}": {
+			"get": {
+				"description": "",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"put": {
+				"description": "",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"firstName": {
+									"example": "string"
+								},
+								"lastName": {
+									"example": "string"
+								},
+								"email": {
+									"example": "email"
+								},
+								"favoriteColor": {
+									"example": "string"
+								},
+								"birthday": {
+									"example": "date"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"delete": {
+				"description": "",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"206": {
+						"description": "Partial Content"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		}
+	}
+}
