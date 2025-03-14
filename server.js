@@ -16,14 +16,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/contacts', routesContacts);
 
 try {
 	const PORT = process.env.PORT;
 	app.listen(PORT, () => {
 		console.log(`Server is running on port ${PORT}`);
-		console.log(`http://localhost:${PORT}`);
+		// console.log(`http://localhost:${PORT}`);
 	});
 } catch (error) {
 	console.error(`Error occurred: ${error}`);

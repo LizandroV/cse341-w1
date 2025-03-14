@@ -1,146 +1,202 @@
 {
-	"swagger": "2.0",
-	"info": {
-		"title": "API Contact",
-		"description": "Manage contacts",
-		"version": "1.0.0"
-	},
-	"host": "cse341-contactsapi-z6wb.onrender.com",
-	"basePath": "/",
-	"schemes": ["https"],
-	"paths": {
-		"/contacts/": {
-			"get": {
-				"description": "",
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"500": {
-						"description": "Internal Server Error"
-					}
-				}
-			},
-			"post": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "body",
-						"in": "body",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"firstName": {
-									"example": "string"
-								},
-								"lastName": {
-									"example": "string"
-								},
-								"email": {
-									"example": "email"
-								},
-								"favoriteColor": {
-									"example": "string"
-								},
-								"birthday": {
-									"example": "date"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"201": {
-						"description": "Created"
-					},
-					"500": {
-						"description": "Internal Server Error"
-					}
-				}
-			}
-		},
-		"/contacts/{id}": {
-			"get": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"500": {
-						"description": "Internal Server Error"
-					}
-				}
-			},
-			"put": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					},
-					{
-						"name": "body",
-						"in": "body",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"firstName": {
-									"example": "string"
-								},
-								"lastName": {
-									"example": "string"
-								},
-								"email": {
-									"example": "email"
-								},
-								"favoriteColor": {
-									"example": "string"
-								},
-								"birthday": {
-									"example": "date"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"500": {
-						"description": "Internal Server Error"
-					}
-				}
-			},
-			"delete": {
-				"description": "",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "string"
-					}
-				],
-				"responses": {
-					"206": {
-						"description": "Partial Content"
-					},
-					"500": {
-						"description": "Internal Server Error"
-					}
-				}
-			}
-		}
-	}
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Contacts API",
+    "description": "API for managing contacts.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://cse341-contactsapi-z6wb.onrender.com",
+      "description": "Production Server"
+    },
+    {
+      "url": "http://localhost:8080",
+      "description": "Development Server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Contacts",
+      "description": "Operations related to contacts"
+    }
+  ],
+  "paths": {
+    "/contacts/": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Retrieve all contacts",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Create a new contact",
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contact"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contacts/{id}": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Retrieve a contact by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID of the contact to retrieve",
+            "example": "60d0fe4f5311236168a109ca"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Update an existing contact",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID of the contact to update",
+            "example": "60d0fe4f5311236168a109ca"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contact"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Delete a contact by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID of the contact to delete",
+            "example": "60d0fe4f5311236168a109ca"
+          }
+        ],
+        "responses": {
+          "206": {
+            "description": "Partial Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "example": "firstName"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "lastName"
+          },
+          "email": {
+            "type": "string",
+            "example": "email"
+          },
+          "favoriteColor": {
+            "type": "string",
+            "example": "color"
+          },
+          "birthday": {
+            "type": "string",
+            "example": "date"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "contactId": {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "Contact ID",
+        "example": "60d0fe4f5311236168a109ca"
+      }
+    }
+  }
 }
